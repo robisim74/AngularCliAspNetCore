@@ -1,0 +1,29 @@
+<mat-sidenav-container class="app-root" fullscreen>
+
+    <mat-sidenav #start mode="over">
+        <mat-nav-list>
+            <a *ngFor="let navItem of navItems" mat-list-item routerLinkActive="active-link" (click)="start.close()" [routerLink]="[navItem.route]">
+                {{ navItem.name }}
+            </a>
+        </mat-nav-list>
+    </mat-sidenav>
+
+    <div>
+        <mat-toolbar color="primary" class="mat-elevation-z6">
+            <button mat-icon-button (click)="start.open()">
+                <mat-icon>menu</mat-icon>
+            </button>
+            <div class="app-toolbar">
+                <h1>{{ title.getTitle() }}</h1>
+            </div>
+            <mat-toolbar-row>
+                <span class="fill-remaining-space"></span>
+            </mat-toolbar-row>
+        </mat-toolbar>
+
+        <div class="app-content">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+
+</mat-sidenav-container>
