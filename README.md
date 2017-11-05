@@ -64,7 +64,7 @@ Make the changes to the controllers or to the Angular app: the browser will upda
 
 #### Staging / Production
 - `npm run build`
-- Set _Staging_ as environment variable: [Working with multiple environments](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/environments)
+- Set _Staging_ as environment variable
 - `dotnet run --no-launch-profile`
 
 ### Visual Studio 2017
