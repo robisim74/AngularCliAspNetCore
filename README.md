@@ -30,9 +30,9 @@ Get the [Changelog](https://github.com/robisim74/AngularCliAspNetCore/blob/maste
 
 ## Installing
 - Requirements
-	- [.NET Core 2.0](https://www.microsoft.com/net/download/core)
+	- At least [.NET Core 2.0](https://www.microsoft.com/net/download/core)
 	- [Node.js and npm](https://docs.npmjs.com/getting-started/installing-node)
-    - [Angular CLI](https://github.com/angular/angular-cli)
+    - At least [Angular CLI 1.5.0](https://github.com/angular/angular-cli)
 
 #### Command line & .NET Core CLI
 - `npm install`
