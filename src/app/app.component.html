@@ -10,12 +10,14 @@
 
     <div>
         <mat-toolbar color="primary" class="mat-elevation-z6">
-            <button mat-icon-button (click)="start.open()">
-                <mat-icon>menu</mat-icon>
-            </button>
-            <div class="app-toolbar">
-                <h1>{{ title.getTitle() }}</h1>
-            </div>
+            <mat-toolbar-row>
+                <button mat-icon-button (click)="start.open()">
+                    <mat-icon>menu</mat-icon>
+                </button>
+                <div class="app-toolbar">
+                    <h1>{{ title.getTitle() }}</h1>
+                </div>
+            </mat-toolbar-row>
             <mat-toolbar-row>
                 <span class="fill-remaining-space"></span>
             </mat-toolbar-row>
