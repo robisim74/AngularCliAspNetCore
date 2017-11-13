@@ -25,7 +25,7 @@ Get the [Changelog](https://github.com/robisim74/AngularCliAspNetCore/blob/maste
 - **wwwroot** _Root for Angular application deployment_
 - **.angular-cli.json** _Angular CLI configuration_
 - **package.json** _Packages for Angular app_
-- **proxy.config.json** _Proxy configuration for ng serve command_
+- **proxy.config.json** _Proxy configuration for ng serve command: [Proxy To Backend](https://github.com/angular/angular-cli/wiki/stories-proxy)_
 - **Startup.cs** _Web API configuration_
 
 ## Installing
@@ -60,7 +60,7 @@ Get the [Changelog](https://github.com/robisim74/AngularCliAspNetCore/blob/maste
 - Set _Development_ as environment variable: [Working with multiple environments](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/environments)
 - `dotnet watch run`
 
-Make the changes to the controllers or to the Angular app: the browser will update without refreshing.
+Make the changes to the Angular app: the browser will update without refreshing.
 
 #### Staging / Production
 - `npm run build`

@@ -10,6 +10,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using System.Diagnostics;
 using Microsoft.AspNetCore.Http;
+using System.Runtime.InteropServices;
 
 namespace AngularCliAspNetCore
 {
@@ -40,16 +41,23 @@ namespace AngularCliAspNetCore
                 // Starts "npm start" command.
                 try
                 {
-                    npmProcess = new Process
+                    if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
                     {
-                        StartInfo = new ProcessStartInfo
+                        npmProcess = new Process
                         {
-                            FileName = "cmd.exe",
-                            Arguments = "/C npm start",
-                            UseShellExecute = false
-                        }
-                    };
+                            StartInfo = new ProcessStartInfo("cmd.exe", "/C npm start") { UseShellExecute = false }
+                        };
+                    }
+                    else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+                    {
+                        //
+                    }
+                    else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+                    {
+                        //
+                    }
                     npmProcess.Start();
+
                     // Registers the application shutdown event.
                     var applicationLifetime = app.ApplicationServices.GetRequiredService<IApplicationLifetime>();
                     applicationLifetime.ApplicationStopping.Register(OnShutDown);
