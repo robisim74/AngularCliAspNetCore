@@ -81,10 +81,5 @@ Make the changes to the Angular app: the browser will update without refreshing.
 - Select _AngularCliAspNetCore_Prod_ profile
 - Start debugging
 
-## Credits
-- [Integrating ASP.Net Core 2.0 and Angular 4 projects using CLI and Visual Studio Code](https://www.codeproject.com/Articles/1206306/Integrating-ASP-Net-Core-and-Angular-project)
-- [How to build an Angular Application with ASP.NET Core in Visual Studio 2017](https://medium.com/@levifuller/building-an-angular-application-with-asp-net-core-in-visual-studio-2017-visualized-f4b163830eaa)
-- [Live Reloading Angular Application with ASP.NET Core in Visual Studio 2017](https://medium.com/@faisalmuhammad/live-reloading-angular-application-with-asp-net-core-in-visual-studio-2017-957619f31008)
-
 ## License
 MIT
