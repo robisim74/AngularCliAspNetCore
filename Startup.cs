@@ -1,23 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using System.Diagnostics;
 using Microsoft.AspNetCore.Http;
-using System.Runtime.InteropServices;
+using AngularCliAspNetCore.Services;
 
 namespace AngularCliAspNetCore
 {
     public class Startup
     {
-        private Process npmProcess;
-
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -38,34 +30,8 @@ namespace AngularCliAspNetCore
             {
                 app.UseDeveloperExceptionPage();
 
-                // Starts "npm start" command.
-                try
-                {
-                    if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-                    {
-                        npmProcess = new Process
-                        {
-                            StartInfo = new ProcessStartInfo("cmd.exe", "/C npm start") { UseShellExecute = false }
-                        };
-                    }
-                    else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
-                    {
-                        //
-                    }
-                    else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-                    {
-                        //
-                    }
-                    npmProcess.Start();
-
-                    // Registers the application shutdown event.
-                    var applicationLifetime = app.ApplicationServices.GetRequiredService<IApplicationLifetime>();
-                    applicationLifetime.ApplicationStopping.Register(OnShutDown);
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex);
-                }
+                // Starts "npm start" command using Shell extension.
+                app.Shell("npm start");
             }
 
             // Router on the server must match the router on the client (see app.routing.module.ts) to use PathLocationStrategy.
@@ -91,23 +57,6 @@ namespace AngularCliAspNetCore
             app.UseDefaultFiles();
             // Uses static file for the current path.
             app.UseStaticFiles();
-        }
-
-        private void OnShutDown()
-        {
-            if (npmProcess != null)
-            {
-                try
-                {
-                    Console.WriteLine($"Killing process npm process ( {npmProcess.StartInfo.FileName} {npmProcess.StartInfo.Arguments} )");
-                    npmProcess.Kill();
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"Unable to kill npm process ( {npmProcess.StartInfo.FileName} {npmProcess.StartInfo.Arguments} )");
-                    Console.WriteLine($"Exception: {ex}");
-                }
-            }
         }
     }
 }

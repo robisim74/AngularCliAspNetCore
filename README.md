@@ -19,6 +19,8 @@ Get the [Changelog](https://github.com/robisim74/AngularCliAspNetCore/blob/maste
 **AngularCliAspNetCore**
 - **Controllers**
 	- **ValuesController.cs** _Resource API_
+- **Extensions**
+	- **ShellExtensions.cs** _Extension to run npm commands in dev environment_
 - **Properties**
 	- **lanchSettings.json** _ASP.NET Core environments_
 - **src** _Angular application_
