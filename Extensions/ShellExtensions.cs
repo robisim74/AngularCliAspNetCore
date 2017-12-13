@@ -43,6 +43,7 @@ namespace AngularCliAspNetCore.Services
                 Console.WriteLine(ex);
             }
         }
+
         private static void OnShutDown()
         {
             if (process != null)
