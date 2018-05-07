@@ -5,7 +5,7 @@
 Get the [Changelog](https://github.com/robisim74/AngularCliAspNetCore/blob/master/CHANGELOG.md).
 
 ## Features
-- Angular v5 & ASP.NET Core 2
+- Angular v6 & ASP.NET Core 2
 - Angular CLI
 - AoT compilation in development & production mode
 - Angular CLI, .NET Core CLI or Visual Studio 2017
@@ -34,7 +34,7 @@ Get the [Changelog](https://github.com/robisim74/AngularCliAspNetCore/blob/maste
 - Requirements
 	- At least [.NET Core 2.0](https://www.microsoft.com/net/download/core)
 	- [Node.js and npm](https://docs.npmjs.com/getting-started/installing-node)
-    - At least [Angular CLI 1.6.0](https://github.com/angular/angular-cli)
+    - At least [Angular CLI 6.0.0](https://github.com/angular/angular-cli)
 
 #### Command line & .NET Core CLI
 - `npm install`
@@ -59,7 +59,7 @@ Get the [Changelog](https://github.com/robisim74/AngularCliAspNetCore/blob/maste
 ### Command line & .NET Core CLI
 
 #### Development
-- Set _Development_ as environment variable: [Working with multiple environments](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/environments)
+- Set _Development_ as environment variable: [Working with multiple environments](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/environments?view=aspnetcore-2.1#setting-the-environment)
 - `dotnet watch run`
 
 Make the changes to the Angular app: the browser will update without refreshing.
