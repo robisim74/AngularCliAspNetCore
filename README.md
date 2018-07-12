@@ -25,7 +25,7 @@ Get the [Changelog](https://github.com/robisim74/AngularCliAspNetCore/blob/maste
 	- **lanchSettings.json** _ASP.NET Core environments_
 - **src** _Angular application_
 - **wwwroot** _Root for Angular application deployment_
-- **.angular-cli.json** _Angular CLI configuration_
+- **angular.json** _Angular CLI configuration_
 - **package.json** _Packages for Angular app_
 - **proxy.config.json** _Proxy configuration for ng serve command: [Proxy To Backend](https://github.com/angular/angular-cli/wiki/stories-proxy)_
 - **Startup.cs** _Web API configuration_
@@ -33,7 +33,7 @@ Get the [Changelog](https://github.com/robisim74/AngularCliAspNetCore/blob/maste
 ## Installing
 - Requirements
 	- At least [.NET Core 2.0](https://www.microsoft.com/net/download/core)
-	- [Node.js and npm](https://docs.npmjs.com/getting-started/installing-node)
+	- [Node.js and npm](https://nodejs.org)
     - At least [Angular CLI 6.0.0](https://github.com/angular/angular-cli)
 
 #### Command line & .NET Core CLI
