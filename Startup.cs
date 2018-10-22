@@ -1,10 +1,16 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.AspNetCore.Http;
-using AngularCliAspNetCore.Services;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 
 namespace AngularCliAspNetCore
 {
@@ -20,7 +26,19 @@ namespace AngularCliAspNetCore
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc();
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            services.AddSpaStaticFiles(configuration =>
+            {
+                if (Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Development")
+                {
+                    configuration.RootPath = "ClientApp/dist/ClientApp";
+                }
+                else
+                {
+                    configuration.RootPath = "wwwroot";
+                }
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -29,34 +47,33 @@ namespace AngularCliAspNetCore
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-
-                // Starts "npm start" command using Shell extension.
-                app.Shell("npm start");
+            }
+            else
+            {
+                app.UseHsts();
             }
 
-            // Router on the server must match the router on the client (see app.routing.module.ts) to use PathLocationStrategy.
-            var appRoutes = new[] {
-                 "/home",
-                 "/resource"
-            };
+            app.UseHttpsRedirection();
 
-            app.Use(async (context, next) =>
+            app.UseStaticFiles();
+            app.UseSpaStaticFiles();
+
+            app.UseMvc(routes =>
             {
-                if (context.Request.Path.HasValue && appRoutes.Contains(context.Request.Path.Value))
-                {
-                    context.Request.Path = new PathString("/");
-                }
-
-                await next();
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller}/{action=Index}/{id?}");
             });
 
-            app.UseMvc();
+            app.UseSpa(spa =>
+            {
+                spa.Options.SourcePath = "ClientApp";
 
-            // Microsoft.AspNetCore.StaticFiles: API for starting the application from wwwroot.
-            // Uses default files as index.html.
-            app.UseDefaultFiles();
-            // Uses static file for the current path.
-            app.UseStaticFiles();
+                if (env.IsDevelopment())
+                {
+                    spa.UseAngularCliServer(npmScript: "start");
+                }
+            });
         }
     }
 }

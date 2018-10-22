@@ -8,13 +8,5 @@ if (environment.production) {
     enableProdMode();
 }
 
-declare const module: any;
-// Enables Hot Module Replacement.
-if (environment.hmr) {
-    if (module.hot) {
-        module.hot.accept();
-    }
-}
-
 platformBrowserDynamic().bootstrapModule(AppModule)
-    .catch(err => console.log(err));
+    .catch(err => console.error(err));
